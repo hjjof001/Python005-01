@@ -1,7 +1,7 @@
 import pymysql
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
-from sqlalchemy import create_engine, Table, Column, Integer, Date, String, MetaData, ForeignKey
+from sqlalchemy import create_engine, Table, Column, Integer, Date, String, MetaData, ForeignKey, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import DateTime
 
@@ -16,9 +16,9 @@ class User(Base):
     birthday = Column(Date())
     sex = Column(String(1))
     education = Column(String(50))
-    create_time = Column(DateTime, default=datetime.now)
-    update_time = Column(DateTime, default=datetime.now,
-                         onupdate=datetime.now)
+    create_time = Column(DateTime(), server_default=func.now())
+    update_time = Column(DateTime(), server_default=func.now(),
+                         server_onupdate=func.now())
 
 
 db_url = "mysql+pymysql://root:xxx@xxx:3306/testdb?charset=utf8mb4"
