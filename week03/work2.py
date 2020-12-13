@@ -21,12 +21,12 @@ class User(Base):
                          onupdate=datetime.now)
 
 
-db_url = "mysql+pymysql://root:andemysql57@120.26.39.77:3306/testdb?charset=utf8mb4"
+db_url = "mysql+pymysql://root:xxx@xxx:3306/testdb?charset=utf8mb4"
 engine = create_engine(db_url, echo=True, encoding="utf-8")
 
 Base.metadata.create_all(engine)
 
-db = pymysql.connect(host='120.26.39.77', user='root', password="andemysql57", database='testdb', port=3306,
+db = pymysql.connect(host='xxx', user='root', password="xxx", database='testdb', port=3306,
                      charset='utf8mb4')
 
 try:
