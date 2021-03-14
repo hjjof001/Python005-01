@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'mybbs',
         'USER': 'root',
         'PASSWORD': '12345678',
-        'HOST': '192.168.80.123',
+        'HOST': '192.168.88.88',
         'PORT': '3306',
         'CONN_MAX_AGE':5*60,
         'OPTIONS':{'charset':'utf8mb4'},
@@ -98,7 +98,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.80.123:6379/1",
+        "LOCATION": "redis://192.168.88.88:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
