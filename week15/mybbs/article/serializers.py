@@ -17,11 +17,12 @@ class ArticleAPISerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('url', 'id', 'title', 'author', 'content', 'pv', 'created_time')
+        fields = ('url', 'id', 'title', 'author', 'content', 'tag', 'pv', 'created_time')
         extra_kwargs = {
             'created_time': {'read_only': True},
             'pv': {'read_only': True},
             'author': {'required': False},
+            'tag': {'required': False},
         }
 
     def create(self, validated_data):
@@ -43,21 +44,3 @@ class CommentAPISerializer(serializers.ModelSerializer):
             'parent': {'required': False},
         }
 
-
-class ReplyAPISerializer(CommentAPISerializer):
-    """回复序列"""
-
-    class Meta:
-        model = Comment
-        fields = ('url', 'id', 'aid', 'author', 'be_mid', 'content', 'created_time')
-
-
-class NotificationsAPISerializer(serializers.Serializer):
-    """通知序列"""
-
-    content = serializers.CharField()
-    author = serializers.CharField()
-    uid = serializers.IntegerField()
-
-    class Meta:
-        fields = ('content', 'author', 'uid')

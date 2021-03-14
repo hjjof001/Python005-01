@@ -14,7 +14,7 @@ class Tag(models.Model):
 
 class Article(models.Model):
     title = models.CharField('标题', max_length=100)
-    author = models.ForeignKey(UserProfile, related_name='article', on_delete=models.DO_NOTHING, verbose_name='作者')
+    author = models.ForeignKey(UserProfile, related_name='article', blank=True, on_delete=models.DO_NOTHING, verbose_name='作者')
     content = models.TextField('正文')
     alive = models.BooleanField('是否正常', default=True)
     pv = models.PositiveIntegerField(default=1)

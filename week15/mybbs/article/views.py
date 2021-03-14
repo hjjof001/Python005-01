@@ -37,10 +37,9 @@ class ArticleAPIViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         if not instance.alive:
             return Response(status=status.HTTP_404_NOT_FOUND)
-
-        serializer = self.get_serializer(instance)
         num = get_cache_counter(kwargs['pk'])
-        serializer.data['pv'] = num
+        instance.pv = num
+        serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
     def delete(self, request, *args, **kwargs):
